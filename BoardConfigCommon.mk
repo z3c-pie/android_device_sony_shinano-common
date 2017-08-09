@@ -24,7 +24,7 @@ PRODUCT_PLATFORM:= shinano
 # Kernel information
 BOARD_KERNEL_BASE     := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_KERNEL_CMDLINE  := androidboot.hardware=qcom msm_rtb.filter=0x3b7 ehci-hcd.park=3 dwc3.maximum_speed=high dwc3_msm.prop_chg_detect=Y
+BOARD_KERNEL_CMDLINE  := androidboot.hardware=qcom msm_rtb.filter=0x3b7 ehci-hcd.park=3 dwc3.maximum_speed=high dwc3_msm.prop_chg_detect=Y vmalloc=300M
 #BOARD_KERNEL_CMDLINE  += androidboot.selinux=permissive
 BOARD_KERNEL_IMAGE_NAME := zImage
 BOARD_MKBOOTIMG_ARGS  := --ramdisk_offset 0x02000000 --tags_offset 0x01E00000
@@ -118,7 +118,7 @@ TARGET_LD_SHIM_LIBS := \
     /system/lib/libcammw.so|libsensor.so \
     /system/lib/libsomc_chokoballpal.so|/system/vendor/lib/libshim_camera.so \
     /system/lib/libcald_pal.so|/system/vendor/lib/libshim_cald.so \
-    /system/lib/hw/camera.vendor.qcom.so|libsensor.so 
+    /system/lib/hw/camera.vendor.qcom.so|libsensor.so
 
 # Filesystem
 BOARD_FLASH_BLOCK_SIZE := 131072
