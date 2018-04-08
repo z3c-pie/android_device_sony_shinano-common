@@ -227,9 +227,6 @@ vendor/lib/libquipc_os_api.so
 vendor/lib/libquipc_ulp_adapter.so
 vendor/lib/libulp2.so
 
-# HW Config
-etc/pre_hw_config.sh
-
 # IRSC
 bin/irsc_util
 

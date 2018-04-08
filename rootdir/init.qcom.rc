@@ -87,18 +87,15 @@ on fs
     write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 53059
 
     symlink /sdcard /storage/sdcard0
-    
+
     # Start hvdcp to enable quck charge 2.0 in power off charge
     start hvdcp
-    
+
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
 
     write /sys/kernel/boot_adsp/boot 1
-
-    # Run pre_hw_config.sh before entering charge only mode.
-    exec /system/bin/sh /system/etc/pre_hw_config.sh
 
 on boot
     write /sys/module/qpnp_power_on/parameters/forcecrash_on 1
@@ -141,13 +138,13 @@ on boot
 
     # Wlan Interface Port
     setprop wifi.interface wlan0
-    
+
     # WiFi Firmware
     chown wifi wifi /sys/module/bcmdhd/parameters/firmware_path
 
     # Send single UNSOL_CALL_RING notification
     setprop ro.telephony.call_ring.multiple false
-    
+
     # Create folder for timekeep
     mkdir /data/time/ 0700 system system
     chmod 0770 /data/time/ats_2
@@ -409,8 +406,8 @@ on post-fs-data
 
 on property:bluetooth.isEnabled=true
 #    start btwlancoex
-    write /sys/class/bluetooth/hci0/idle_timeout 7000
-    
+     write /sys/class/bluetooth/hci0/idle_timeout 7000
+
 on property:sys.boot_completed=1
     # Enable ZRAM on boot_complete
     swapon_all fstab.qcom
@@ -420,7 +417,7 @@ service qmuxd /system/vendor/bin/qmuxd
     class main
     user radio
     group radio audio bluetooth gps nfc diag wakelock
-    
+
 # Wi-Fi and BT MAC addresses
 service macaddrsetup /system/vendor/bin/macaddrsetup /sys/devices/platform/bcmdhd_wlan/macaddr
     class late_start
@@ -432,7 +429,7 @@ service netmgrd /system/vendor/bin/netmgrd
     user root
     group root system wifi wakelock radio inet
     seclabel u:r:netmgrd:s0
-    
+
 on property:ro.radio.noril=true
     stop ril-daemon
     stop netmgrd
@@ -570,7 +567,7 @@ service timekeep /system/vendor/bin/timekeep restore
     oneshot
     writepid /dev/cpuset/system-background/tasks
 
-# Quick Charge    
+# Quick Charge
 service hvdcp /system/vendor/bin/hvdcp
     class core
     user root
