@@ -54,12 +54,11 @@ PRODUCT_COPY_FILES += \
 
 # Camera (stock .575 blobs)
 PRODUCT_PACKAGES += \
+	tad_static \
+	wait4tad_static \
 	libshims_signal \
 	libshims_idd \
         libsonycamera
-
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/sbin/tad_static:root/sbin/tad_static
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/system/bin/credmgrfirstboot.sh:system/bin/credmgrfirstboot.sh
@@ -154,7 +153,7 @@ PRODUCT_PACKAGES += \
 
 # Sensor file
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/system/etc/init.qcom-sensor.sh:system/etc/init.qcom-sensor.sh 
+    $(COMMON_PATH)/rootdir/system/etc/init.qcom-sensor.sh:system/etc/init.qcom-sensor.sh
 
 # BCM Wifi
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)
