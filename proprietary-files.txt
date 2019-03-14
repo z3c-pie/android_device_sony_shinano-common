@@ -1,5 +1,6 @@
 # Audio
 vendor/lib/libacdbloader.so
+vendor/lib/libacdbmapper.so
 vendor/lib/libacdbrtac.so
 vendor/lib/libadiertac.so
 vendor/lib/libaudcal.so
@@ -9,19 +10,30 @@ vendor/lib/soundfx/libqcvirt.so
 
 # ADSP
 vendor/lib/libadsprpc.so
+vendor/lib/libfastcvadsp_stub.so
 
 # Camera
-bin/credmgrd
-bin/iddd
-bin/mm-qcamera-daemon
-etc/iddd.conf
+bin/credmgrd:vendor/bin/credmgrd
+bin/iddd:vendor/bin/iddd
+bin/mm-qcamera-daemon:vendor/bin/mm-qcamera-daemon
+bin/suntrold:vendor/bin/suntrold
 etc/firmware/cpp_firmware_v1_1_1.fw
 etc/firmware/cpp_firmware_v1_1_6.fw
 etc/firmware/cpp_firmware_v1_2_0.fw
+etc/flashled_calc_parameters.cfg
+etc/permissions/com.sonyericsson.idd.xml
+-framework/com.sonyericsson.idd.jar
 lib/hw/camera.qcom.so:lib/hw/camera.vendor.qcom.so
+lib/lib_extended_boot_lock.so
+lib/lib_get_hwc_revision.so
+lib/lib_uncontrolled_rooting_status.so
+lib/lib_get_s1_cert_common_name.so
 lib/lib_get_secure_mode.so
 lib/lib_get_rooting_status.so
+lib/lib_s1_verification.so
 lib/libcamera_clientsemc.so
+lib/libcameralight.so
+lib/libcammw.so
 lib/libcredential-manager-keystore.so
 lib/libcredential-manager-service.so
 lib/libidd.so
@@ -36,45 +48,64 @@ vendor/lib/libjpegdhw.so
 vendor/lib/libjpegehw.so
 vendor/lib/libmmcamera2_c2d_module.so
 vendor/lib/libmmcamera2_cpp_module.so
+vendor/lib/libmmcamera2_frame_algorithm.so
+vendor/lib/libmmcamera2_iface_modules.so
+vendor/lib/libmmcamera2_imglib_modules.so
+vendor/lib/libmmcamera2_is.so
+vendor/lib/libmmcamera2_isp_modules.so
 vendor/lib/libmmcamera2_pproc_modules.so
+vendor/lib/libmmcamera2_sensor_modules.so
+vendor/lib/libmmcamera2_stats_algorithm.so
+vendor/lib/libmmcamera2_stats_modules.so
 vendor/lib/libmmcamera2_vpe_module.so
 vendor/lib/libmmcamera2_wnr_module.so
 vendor/lib/libmmcamera_faceproc.so
 vendor/lib/libmmcamera_hdr_gb_lib.so
 vendor/lib/libmmcamera_hdr_lib.so
 vendor/lib/libmmcamera_imglib.so
-vendor/lib/libmmcamera_sunny_p12v01m_eeprom.so
+vendor/lib/libmmcamera_ofilm_oty5f03_eeprom.so
 vendor/lib/libmmcamera_sunny_p5v23c_eeprom.so
+vendor/lib/libmmcamera_sunny_p12v01m_eeprom.so
+vendor/lib/libmmcamera_sunny_q8v18a_eeprom.so
+vendor/lib/libmmcamera_tintless_algo.so
+vendor/lib/libmmcamera_tintless_bg_pca_algo.so
 vendor/lib/libmmcamera_truly_cm7700_eeprom.so
 vendor/lib/libmmcamera_wavelet_lib.so
 vendor/lib/libmmjpeg.so
 vendor/lib/libmmqjpeg_codec.so
+vendor/lib/liboemcamera.so
 vendor/lib/libqomx_jpegdec.so
 vendor/lib/libqomx_jpegenc.so
+vendor/camera/flash.dat
+vendor/camera/jpeg_fsc.dat
+
+# Camera - from Sony
+vendor/bin/tad_static|fc4aa2d122955dbe5e7d048563439eb269504135
+vendor/bin/wait4tad_static|da05018953d6aab0afeb704863fda9fcc8b3acb2
 
 # Cacao
-lib/camera/libexcal_object_tracker_plugin.so
 lib/camera/libexcal_cam_ctrl_plugin.so
-lib/camera/libexcal_scene_detector_plugin.so
-lib/camera/libexcal_streaming_ctrl_plugin.so
-lib/camera/libexcal_idt_ctrl_plugin.so
-lib/camera/libexcal_hdr_plugin.so
-lib/camera/libexcal_splitter_plugin.so
-lib/camera/libexcal_color_ctrl_plugin.so
-lib/camera/libexcal_snapshot_ctrl_plugin.so
-lib/camera/libexcal_hal_ctrl_plugin.so
-lib/camera/libexcal_face_detector_plugin.so
-lib/camera/libexcal_debug_display_plugin.so
-lib/camera/libexcal_lens_ctrl_plugin.so
-lib/camera/libexcal_focus_stats_conv_plugin.so
-lib/camera/libexcal_image_conv_plugin.so
-lib/camera/libexcal_flicker_detector_plugin.so
-lib/camera/libexcal_multiframe_nr_plugin.so
-lib/camera/libexcal_jpeg_enc_plugin.so
 lib/camera/libexcal_cap_ctrl_plugin.so
-lib/camera/libexcal_motion_estimation_plugin.so
-lib/camera/libexcal_iq_ctrl_plugin.so
+lib/camera/libexcal_color_ctrl_plugin.so
+lib/camera/libexcal_debug_display_plugin.so
 lib/camera/libexcal_exposure_ctrl_plugin.so
+lib/camera/libexcal_face_detector_plugin.so
+lib/camera/libexcal_flicker_detector_plugin.so
+lib/camera/libexcal_focus_stats_conv_plugin.so
+lib/camera/libexcal_hal_ctrl_plugin.so
+lib/camera/libexcal_hdr_plugin.so
+lib/camera/libexcal_idt_ctrl_plugin.so
+lib/camera/libexcal_image_conv_plugin.so
+lib/camera/libexcal_iq_ctrl_plugin.so
+lib/camera/libexcal_jpeg_enc_plugin.so
+lib/camera/libexcal_lens_ctrl_plugin.so
+lib/camera/libexcal_motion_estimation_plugin.so
+lib/camera/libexcal_multiframe_nr_plugin.so
+lib/camera/libexcal_object_tracker_plugin.so
+lib/camera/libexcal_scene_detector_plugin.so
+lib/camera/libexcal_snapshot_ctrl_plugin.so
+lib/camera/libexcal_splitter_plugin.so
+lib/camera/libexcal_streaming_ctrl_plugin.so
 lib/libcacao_chokoball.so
 lib/libcacao_client.so
 lib/libcacao_common.so
@@ -200,8 +231,20 @@ etc/firmware/venus.b04
 etc/firmware/venus.mbn
 etc/firmware/venus.mdt
 
+# CNE
+bin/cnd:vendor/bin/cnd
+-priv-app/CNEService/CNEService.apk
+vendor/lib/libcne.so
+vendor/lib/libcneapiclient.so
+vendor/lib/libcneconn.so
+vendor/lib/libcneqmiutils.so
+vendor/lib/libwms.so
+vendor/lib/libwqe.so
+vendor/lib/libxml.so
+
 # DRM
-bin/qseecomd
+bin/qseecomd:vendor/bin/qseecomd
+bin/wvkbd:vendor/bin/wvkdb
 vendor/lib/libdrmdiag.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
@@ -221,8 +264,24 @@ vendor/lib/liblocationservice.so
 vendor/lib/libquipc_os_api.so
 vendor/lib/libulp2.so
 
+# IDD
+bin/idd-logreader:vendor/bin/logreader
+
+# IMS
+bin/ims_rtp_daemon:vendor/bin/ims_rtp_daemon
+bin/imscmservice:vendor/bin/imscmservice
+bin/imsdatadaemon:vendor/bin/imsdatadaemon
+bin/imsqmidaemon:vendor/bin/imsqmidaemon
+vendor/lib/lib-imscamera.so
+vendor/lib/lib-imsdpl.so
+vendor/lib/lib-imsqimf.so
+vendor/lib/lib-imsrcscm.so
+vendor/lib/lib-imsrcscmclient.so
+vendor/lib/lib-imsrcscmservice.so
+vendor/lib/lib-imsxml.so
+
 # IRSC
-bin/irsc_util
+bin/irsc_util:vendor/bin/irsc_utils
 
 # Keystore
 vendor/firmware/keymaster/keymaster.b00
@@ -235,17 +294,25 @@ vendor/firmware/keymaster/keymaster.mdt
 etc/media_profiles.xml
 
 # Modem
-bin/netmgrd
-bin/qmuxd
-bin/rmt_storage
+bin/netmgrd:vendor/bin/netmgrd
+bin/qmuxd:vendor/bin/qmuxd
+bin/rmt_storage:vendor/bin/rmt_storage
 lib/libpin-cache.so
 lib/libstartup-reason.so
+vendor/lib/libconfigdb.so
 vendor/lib/libdiag.so
 vendor/lib/libdsi_netctrl.so
 vendor/lib/libdsutils.so
 vendor/lib/libidl.so
 vendor/lib/libnetmgr.so
 vendor/lib/libril-qc-qmi-1.so
+
+# NFC
+vendor/firmware/libpn547_fw.so
+
+# NFC - from 15.1
+vendor/lib/hw/android.hardware.nfc@1.0-impl.so|d3ce6c813c5fab36ddf2d9a933cf6a3da7905382
+vendor/lib/hw/nfc_nci.pn54x.default.so|9175a9714b3e9e27401ea8f51157e5947bb216f3
 
 # Playready
 etc/firmware/cmnlib.b00
@@ -259,12 +326,27 @@ vendor/lib/libqcci_legacy.so
 vendor/lib/libqdi.so
 vendor/lib/libqdp.so
 vendor/lib/libqmi_cci.so
+vendor/lib/libqmi_client_helper.so
 vendor/lib/libqmi_client_qmux.so
 vendor/lib/libqmi_common_so.so
 vendor/lib/libqmi_csi.so
 vendor/lib/libqmi_encdec.so
 vendor/lib/libqmiservices.so
 vendor/lib/libqmi.so
+
+# QPerformance - from Oneplus Onyx (OOS 3.1.4)
+#vendor/bin/iop
+#etc/permissions/com.qualcomm.qti.Performance.xml
+#-framework/QPerformance.jar
+#lib/libqti-iop-client.so
+#lib/libqti-iop.so
+#lib/libqti_performance.so
+
+# Quick Charge
+bin/hvdcp:vendor/bin/hvdcp
+
+# SCD
+bin/scd:vendor/bin/scd
 
 # Security
 lib/lib_asb_tee.so
@@ -286,26 +368,57 @@ etc/firmware/tzsuntory.b01
 etc/firmware/tzsuntory.b02
 etc/firmware/tzsuntory.b03
 etc/firmware/tzsuntory.mdt
+etc/firmware/tzwidevine.b00
+etc/firmware/tzwidevine.b01
+etc/firmware/tzwidevine.b02
+etc/firmware/tzwidevine.b03
+etc/firmware/tzwidevine.mdt
+etc/firmware/tzwvcpybuf.b00
+etc/firmware/tzwvcpybuf.b01
+etc/firmware/tzwvcpybuf.b02
+etc/firmware/tzwvcpybuf.b03
+etc/firmware/tzwvcpybuf.mdt
 
 # Sensors
+bin/sensors.qcom:vendor/bin/sensors.qcom
+lib/libmdmdetect.so
+vendor/lib/hw/activity_recognition.msm8974.so
 vendor/lib/hw/sensors.msm8974.so
+vendor/lib/libsensor1.so
 vendor/lib/libsensor_reg.so
 
 # TA
-bin/taimport
-bin/ta_param_loader
-bin/ta_qmi_service
-bin/mlog_qmi_service
+bin/mlog_qmi_service:vendor/bin/mlog_qmi_service
+bin/ta_qmi_service:vendor/bin/ta_qmi_service
+bin/ta_param_loader:vendor/bin/ta_param_loader
+bin/taimport:vendor/bin/taimport
+bin/sct_service:vendor/bin/sct_service
+bin/updatemiscta:vendor/bin/updatemiscta
 lib/libMiscTaAccessor.so
 lib/libmiscta.so
 lib/libta.so
+vendor/lib/libsmemlog.so
 
 # Time
-bin/time_daemon
+bin/time_daemon:vendor/bin/time_daemon
 -vendor/lib/libtime_genoff.so
 
 # Touchscreen
-bin/clearpad_fwloader
+bin/clearpad_fwloader:vendor/bin/clearpad_fwloader
+etc/firmware/touch_module_id_0x8a.img
+etc/firmware/touch_module_id_0x8c.img
+etc/firmware/touch_module_id_0x8d.img
+etc/firmware/touch_module_id_0x8e.img
+etc/firmware/touch_module_id_0x82.img
+etc/firmware/touch_module_id_0x84.img
+etc/firmware/touch_module_id_0x85.img
+etc/firmware/touch_module_id_0x87.img
+etc/firmware/touch_module_id_0x88.img
+etc/firmware/touch_module_id_0x89.img
+etc/firmware/touch_module_id_0x92.img
+etc/firmware/touch_module_id_0x93.img
+etc/firmware/touch_module_id_0x94.img
+usr/idc/clearpad.idc
 
 # WiFi
-bin/radish
+bin/radish:vendor/bin/radish
