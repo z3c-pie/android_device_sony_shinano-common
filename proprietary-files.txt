@@ -46,7 +46,6 @@ vendor/lib/libmmcamera_imglib.so
 vendor/lib/libmmcamera_sunny_p12v01m_eeprom.so
 vendor/lib/libmmcamera_sunny_p5v23c_eeprom.so
 vendor/lib/libmmcamera_truly_cm7700_eeprom.so
-vendor/lib/libmmcamera_tuning.so
 vendor/lib/libmmcamera_wavelet_lib.so
 vendor/lib/libmmjpeg.so
 vendor/lib/libmmqjpeg_codec.so
@@ -93,8 +92,6 @@ lib/libcald_server.so
 lib/libcald_util.so
 lib/libexcal_core.so
 lib/libexcal_system.so
-lib/libface.so
-lib/libface_wrapper.so
 lib/libsomc_chokoballpal.so
 lib/libsony_chokoball.so
 lib/libsony_chokoballrsc.so
@@ -214,17 +211,14 @@ vendor/lib/libssd.so
 
 # GPS
 -app/com.qualcomm.location.apk:priv-app/com.qualcomm.location/com.qualcomm.location.apk
-bin/gsiff_daemon
 etc/permissions/com.qualcomm.location.xml
 lib/libloc_api_v02.so
-lib/libloc_ds_api.so
 vendor/lib/hw/flp.default.so
 vendor/lib/libgeofence.so
 vendor/lib/libizat_core.so
 vendor/lib/liblbs_core.so
 vendor/lib/liblocationservice.so
 vendor/lib/libquipc_os_api.so
-vendor/lib/libquipc_ulp_adapter.so
 vendor/lib/libulp2.so
 
 # IRSC
@@ -248,7 +242,6 @@ lib/libpin-cache.so
 lib/libstartup-reason.so
 vendor/lib/libdiag.so
 vendor/lib/libdsi_netctrl.so
-vendor/lib/libdsnetutils.so
 vendor/lib/libdsutils.so
 vendor/lib/libidl.so
 vendor/lib/libnetmgr.so
@@ -269,7 +262,6 @@ vendor/lib/libqmi_cci.so
 vendor/lib/libqmi_client_qmux.so
 vendor/lib/libqmi_common_so.so
 vendor/lib/libqmi_csi.so
-vendor/lib/libqmi_csvt_srvc.so
 vendor/lib/libqmi_encdec.so
 vendor/lib/libqmiservices.so
 vendor/lib/libqmi.so
