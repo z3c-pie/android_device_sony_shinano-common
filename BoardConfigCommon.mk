@@ -85,7 +85,7 @@ TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 # SELinux
 BOARD_SEPOLICY_DIRS += \
     device/sony/shinano-common/sepolicy
-    
+
 # Props for hotplugging
 TARGET_SYSTEM_PROP += device/sony/shinano-common/system.prop
 
@@ -116,7 +116,7 @@ TARGET_LD_SHIM_LIBS := \
     /system/lib/libcammw.so|libsensor.so \
     /system/lib/libsomc_chokoballpal.so|/system/vendor/lib/libshim_camera.so \
     /system/lib/libcald_pal.so|/system/vendor/lib/libshim_cald.so \
-    /system/lib/hw/camera.vendor.qcom.so|libsensor.so 
+    /system/lib/hw/camera.vendor.qcom.so|libsensor.so
 
 # Filesystem
 BOARD_FLASH_BLOCK_SIZE := 131072
@@ -130,5 +130,5 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 209715200
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2671771648
 
 # Recovery
-TARGET_RECOVERY_FSTAB := device/sony/shinano-common/rootdir/fstab.full
+TARGET_RECOVERY_FSTAB := device/sony/shinano-common/rootdir/etc/fstab.qcom
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBA_8888"

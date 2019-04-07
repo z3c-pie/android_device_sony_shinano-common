@@ -39,34 +39,29 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/android.software.freeform_window_management.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.freeform_window_management.xml
 
-# Init
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/fstab.qcom:root/fstab.qcom \
-    $(COMMON_PATH)/rootdir/init.qcom.rc:root/init.qcom.rc \
-    $(COMMON_PATH)/rootdir/init.camera.rc:root/init.camera.rc \
-    $(COMMON_PATH)/rootdir/init.platform-common.rc:root/init.platform-common.rc \
-    $(COMMON_PATH)/rootdir/init.sony.rc:root/init.sony.rc \
-    $(COMMON_PATH)/rootdir/init.qcom.power.rc:root/init.qcom.power.rc \
-    $(COMMON_PATH)/rootdir/init.sony.usb.rc:root/init.sony.usb.rc \
-    $(COMMON_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc
-
-# Recovery Init
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/init.recovery.qcom.rc:root/init.recovery.qcom.rc
+# Ramdisk
+PRODUCT_PACKAGES += \
+    fstab.qcom \
+    ueventd.qcom.rc \
+    init.qcom.rc \
+    init.qcom.power.rc \
+    init.qcom-sensor.sh \
+    init.sony.rc \
+    init.sony.usb.rc \
+    init.recovery.qcom.rc \
+    credmgrfirstboot.sh \
+    init.camera.rc
 
 # Camera (stock .575 blobs)
 PRODUCT_PACKAGES += \
 	tad_static \
-	wait4tad_static 
-
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/system/vendor/bin/credmgrfirstboot.sh:$(TARGET_COPY_OUT_VENDOR)/bin/credmgrfirstboot.sh
+	wait4tad_static
 
 # Audio
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/audio/audio_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.xml \
-    $(COMMON_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml 
-    
+    $(COMMON_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml
+
 PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
@@ -83,8 +78,8 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-   libbt-vendor   
-   
+   libbt-vendor
+
 # RIL
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/netmgr_config.xml:system/etc/data/netmgr_config.xml \
@@ -154,10 +149,6 @@ PRODUCT_COPY_FILES += \
 # Off mode charger
 PRODUCT_PACKAGES += \
     charger_res_images
-
-# Sensor file
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/system/vendor/bin/init.qcom-sensor.sh:system/vendor/bin/init.qcom-sensor.sh
 
 # BCM Wifi
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)
